@@ -110,7 +110,7 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[: Use the Decorator design pattern]**
+- [ ] **[Use the Decorator design pattern]**
 - [ ] **[Set up associations]**
 - [ ] **[Add basic UI]**
 - [ ] **[Refactor code]**
