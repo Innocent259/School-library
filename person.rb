@@ -10,6 +10,10 @@ class Person < Nameable
 
   attr_accessor :name, :age
 
+  def correct_name
+    @name
+  end
+
   private
 
   def of_age?
@@ -18,9 +22,5 @@ class Person < Nameable
 
   def can_use_service?
     of_age? || @parent_permission
-  end
-
-  def correct_name
-    @name
   end
 end
