@@ -55,6 +55,7 @@ School Library is an OOP app that uses classes to represents students and teache
 - [ ] **Created Person class**
 - [ ] **Created Student class**
 - [ ] **Created Teacher class**
+- [ ] **[Use the Decorator design pattern]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -110,7 +111,6 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Use the Decorator design pattern]**
 - [ ] **[Set up associations]**
 - [ ] **[Add basic UI]**
 - [ ] **[Refactor code]**
