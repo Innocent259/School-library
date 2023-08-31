@@ -1,4 +1,4 @@
-require_relative 'nameable.rb'
+require_relative 'nameable'
 
 class Person < Nameable
   def initialize(age, name: 'unknown', parent_permission: true)
@@ -7,7 +7,7 @@ class Person < Nameable
     @name = name
     @parent_permission = parent_permission
   end
-  
+
   attr_accessor :name, :age
 
   private
