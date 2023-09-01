@@ -8,6 +8,11 @@ class Student < Person
     super(id, age, name: name, parent_permission: parent_permission)
   end
 
+  def classroom=(classroom)
+    @classroom = classroom
+    @classroom.students.push(self) unless @classroom.students.member?(self)
+  end
+
   def play_hooky
     '¯\\(ツ)/¯'
   end
