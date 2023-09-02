@@ -11,31 +11,28 @@ class App
     @rentals = []
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def run
     loop do
       display_menu
       choice = gets.chomp.to_i
 
       case choice
-      when 1
-        list_all_books
-      when 2
-        list_all_people
-      when 3
-        create_person
-      when 4
-        create_book
-      when 5
-        create_rental
-      when 6
-        list_rentals_for_person
+      when 1 then list_all_books
+      when 2 then list_all_people
+      when 3 then create_person
+      when 4 then create_book
+      when 5 then create_rental
+      when 6 then search_rented_books_by_person
       when 7
+        exit_app
         break
       else
         puts 'Invalid input. Please choose a valid option.'
       end
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
