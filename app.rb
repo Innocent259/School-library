@@ -18,7 +18,7 @@ class App
 
   def list_all_people
     puts 'List of all people:'
-    @people.each { |person| puts "#{person.name}" }
+    @people.each { |person| puts person.name }
   end
 
   def create_person(age, name, role, options = {})
@@ -104,7 +104,7 @@ class App
     puts '8. Quit'
   end
 
-  def find_person_by_id(person_id)
+  def find_person_by_id(_person_id)
     @people.find { |person| person.classroom == classroom }
   end
 
