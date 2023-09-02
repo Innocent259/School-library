@@ -142,10 +142,14 @@ class App
     books_for_rent
     book_id = gets.chomp.to_i
     book = rented_book(book_id)
+
     puts 'Select person from the following list by number (not id): '
     all_renters
     person_id = gets.chomp.to_i
     person = renter_person(person_id)
+
+    puts "Selected person: #{person.name} (ID: #{person.id}), Age: #{person.age}, Role: #{person.class}"
+
     print 'Date: '
     date = gets.chomp.to_s
     create_rental(date, book, person)
