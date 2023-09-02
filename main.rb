@@ -41,15 +41,15 @@ def create_person_menu(app)
   loop do
     puts "\nCreating a person:"
     puts 'Choose the role:'
-    puts '1. Teacher'
-    puts '2. Student'
+    puts '1. Student'
+    puts '2. Teacher'
     puts '3. Go back to the main menu'
 
     choice = gets.chomp.to_i
 
     case choice
-    when 1 then create_person(app, 'teacher')
-    when 2 then create_person(app, 'student')
+    when 1 then create_person(app, 'student')
+    when 2 then create_person(app, 'teacher')
     when 3
       puts 'Going back to the main menu.'
       break
