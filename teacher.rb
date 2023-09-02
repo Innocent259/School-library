@@ -1,14 +1,15 @@
 require_relative 'person'
 
 class Teacher < Person
-  attr_reader :specialization
+  attr_accessor :specialization
 
-  def initialize(id, age, specialization, name: 'unknown', parent_permission: true)
-    super(id, age, name: name, parent_permission: parent_permission)
+  def initialize(age, name, specialization)
+    super(age, name, parent_permission: true)
+    @id = Random.rand(1..1000)
     @specialization = specialization
   end
 
-  def can_use_service?
-    true # Override to always return true
+  def to_s
+    "[Teacher] Name: #{@name}, ID: #{@id}, Age: #{@age}"
   end
 end
