@@ -1,5 +1,6 @@
 require_relative 'app'
 
+# rubocop:disable Metrics/CyclomaticComplexity
 def main
   app = App.new
   puts 'Welcome to the Library Management App!'
@@ -23,6 +24,7 @@ def main
     end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
 
 def display_menu
   puts "\nPlease choose an option:"
