@@ -1,25 +1,26 @@
 require_relative 'app'
 
-def display_start
-  puts 'Welcome to School Library App terminal!'
+def display_welcome_message
+  puts 'Welcome to School Library App!'
+  puts
 end
 
 def user_input
   gets.chomp.to_i
 end
 
-def option_list(app, option)
+def process_user_choice(app, choice)
   actions = {
-    1 => :book_list,
-    2 => :people_list,
-    3 => :create_person,
-    4 => :create_a_book,
-    5 => :create_a_rental,
-    6 => :search_rental_by_id,
-    7 => :exit_terminal
+    1 => :list_of_books,
+    2 => :list_of_people,
+    3 => :create_person_with_input,
+    4 => :create_book_with_input,
+    5 => :create_rental_with_input,
+    6 => :search_rented_book_with_id,
+    7 => :exit_app
   }
 
-  action = actions[option]
+  action = actions[choice]
   if action
     app.send(action)
   else
@@ -27,18 +28,18 @@ def option_list(app, option)
   end
 end
 
-def exit_terminal
-  puts 'Exiting terminal....'
+def exit_app
+  puts 'Exiting the app....'
   exit(0)
 end
 
 def main
   app = App.new
   loop do
-    display_start
+    display_welcome_message
     app.display_menu
-    option = user_input
-    option_list(app, option)
+    choice = user_input
+    process_user_choice(app, choice)
     puts
   end
 end
