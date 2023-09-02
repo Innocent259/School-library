@@ -1,13 +1,13 @@
-require './person'
+require_relative 'person'
 
 class Student < Person
   attr_reader :classroom
   attr_accessor :id, :parent_permission
 
-  def initialize(name, age, parent_permission)
-    super(name, age, parent_permission: parent_permission)
-    @classroom = classroom
+  def initialize(age, name, parent_permission)
+    super(age, name)
     @id = Random.rand(1..1000)
+    @parent_permission = parent_permission
   end
 
   def classroom=(classroom)
@@ -16,7 +16,7 @@ class Student < Person
   end
 
   def play_hooky
-    '¯(ツ)/¯'
+    '¯\(ツ)/¯'
   end
 
   def to_s
