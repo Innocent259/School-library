@@ -53,7 +53,7 @@ class App
     rental = Rental.new(date, book, person)
     @rentals << rental
     puts "#{person.name} (ID: #{generate_person_id(person.name,
-                                                   person.age)}) has rented '#{book.title}' by #{book.author} on #{date}."
+                                                   person.age)}) rented '#{book.title}'on #{date}."
   end
 
   def list_rentals_for_person(person_id)
@@ -71,7 +71,7 @@ class App
   def generate_person_id(name, age)
     "#{name.capitalize.gsub(' ', '_')}_#{age}"
   end
-  
+
   def find_person_by_id(person_id)
     @people.find { |person| generate_person_id(person.name, person.age) == person_id }
   end
