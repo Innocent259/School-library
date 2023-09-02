@@ -18,24 +18,24 @@ class App
 
   def list_all_people
     puts 'List of all people:'
-    @people.each { |person| puts "#{person.name} (ID: #{person.id})" }
+    @people.each { |person| puts "#{person.name}" }
   end
 
-  def create_person(name, age, role, options = {})
+  def create_person(age, name, role, options = {})
     case role
     when 'teacher'
       specialization = options[:specialization]
-      person = Teacher.new(@people.length + 1, age, specialization, name: name)
+      person = Teacher.new(@people.length + 1, age, name, specialization)
     when 'student'
       classroom = options[:classroom]
-      person = Student.new(@people.length + 1, age, classroom, name: name)
+      person = Student.new(@people.length + 1, age, name, classroom)
     else
       puts 'Invalid role. Person not created.'
       return
     end
 
     @people << person
-    puts "#{person.name} (ID: #{person.id}) has been created as a #{role}."
+    puts "#{person.name} has been created as a #{role}."
   end
 
   def create_book(title, author)
@@ -105,7 +105,7 @@ class App
   end
 
   def find_person_by_id(person_id)
-    @people.find { |person| person.id == person_id }
+    @people.find { |person| person.classroom == classroom }
   end
 
   def find_book_by_title(book_title)
@@ -117,13 +117,13 @@ class App
   end
 
   def create_teacher
-    puts "Enter teacher's name:"
-    name = gets.chomp
     puts "Enter teacher's age:"
     age = gets.chomp.to_i
+    puts "Enter teacher's name:"
+    name = gets.chomp
     puts "Enter teacher's specialization:"
     specialization = gets.chomp
-    create_person(name, age, 'teacher', specialization: specialization)
+    create_person(age, name, 'teacher', specialization: specialization)
   end
 
   def create_student
@@ -133,7 +133,7 @@ class App
     age = gets.chomp.to_i
     puts "Enter student's classroom:"
     classroom = gets.chomp
-    create_person(name, age, 'student', classroom: classroom)
+    create_person(age, name, 'student', classroom: classroom)
   end
 
   def create_book_prompt
