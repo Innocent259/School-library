@@ -11,12 +11,12 @@ end
 
 def process_user_choice(app, choice)
   actions = {
-    1 => :list_of_books,
-    2 => :list_of_people,
-    3 => :create_person_with_input,
-    4 => :create_book_with_input,
-    5 => :create_rental_with_input,
-    6 => :search_rented_book_with_id,
+    1 => :list_all_books,
+    2 => :list_all_people,
+    3 => :create_person,
+    4 => :create_book,
+    5 => :create_rental,
+    6 => :search_rented_books_by_person,
     7 => :exit_app
   }
 
