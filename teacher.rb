@@ -9,6 +9,6 @@ class Teacher < Person
   end
 
   def can_use_service?
-    true # Override to always return true
+    true
   end
 end
