@@ -18,24 +18,24 @@ class App
 
   def list_all_people
     puts 'List of all people:'
-    @people.each { |person| puts person.name }
+    @people.each { |person| puts "ID: #{generate_person_id(person.name, person.age)}, Name: #{person.name}" }
   end
 
   def create_person(age, name, role, options = {})
     case role
     when 'teacher'
       specialization = options[:specialization]
-      person = Teacher.new(@people.length + 1, age, name, specialization)
+      person = Teacher.new(generate_person_id(name, age), age, name, specialization)
     when 'student'
       classroom = options[:classroom]
-      person = Student.new(@people.length + 1, age, name, classroom)
+      person = Student.new(generate_person_id(name, age), age, name, classroom)
     else
       puts 'Invalid role. Person not created.'
       return
     end
 
     @people << person
-    puts "#{person.name} has been created as a #{role}."
+    puts "#{person.name} (ID: #{generate_person_id(name, age)}) has been created as a #{role}."
   end
 
   def create_book(title, author)
@@ -52,7 +52,8 @@ class App
 
     rental = Rental.new(date, book, person)
     @rentals << rental
-    puts "#{person.name} has rented '#{book.title}' by #{book.author} on #{date}."
+    puts "#{person.name} (ID: #{generate_person_id(person.name,
+                                                   person.age)}) has rented '#{book.title}' by #{book.author} on #{date}."
   end
 
   def list_rentals_for_person(person_id)
@@ -60,15 +61,19 @@ class App
 
     return unless person
 
-    puts "Rentals for #{person.name} (ID: #{person.id}):"
+    puts "Rentals for #{person.name} (ID: #{generate_person_id(person.name, person.age)}):"
     rentals = @rentals.select { |r| r.person == person }
     rentals.each { |rental| puts "#{rental.book.title} by #{rental.book.author} on #{rental.date}" }
   end
 
   private
 
+  def generate_person_id(name, age)
+    "#{name.capitalize.gsub(' ', '_')}_#{age}"
+  end
+  
   def find_person_by_id(person_id)
-    @people.find { |person| person.id == person_id }
+    @people.find { |person| generate_person_id(person.name, person.age) == person_id }
   end
 
   def find_book_by_title(book_title)
